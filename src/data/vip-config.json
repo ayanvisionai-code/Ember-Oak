@@ -1,9 +1,10 @@
 {
   "enabled": true,
-  "title": "Claim Your Welcome Gift",
-  "description": "Enjoy a complimentary reward on your first visit.",
-  "rewardTitle": "Free Dessert",
-  "ctaText": "Claim My Gift",
+  "title": "Exclusive First Visit Reward",
+  "description": "Enjoy a complimentary mocktail during your first dining experience.",
+  "explanation": "Complete a quick 30-second form and your welcome reward will be delivered securely to your WhatsApp.",
+  "rewardTitle": "Complimentary Mocktail",
+  "ctaText": "Claim My Welcome Gift",
   "webhookUrl": "https://hook.us1.make.com/mock-webhook-endpoint",
   "expirationDays": 14
 }

@@ -1,5 +1,5 @@
 import { useState, lazy, Suspense } from 'react';
-import { Gift } from 'lucide-react';
+import { Wine, Check } from 'lucide-react';
 import config from '../../data/vip-config.json';
 import './AcquisitionWidget.css';
 
@@ -14,9 +14,20 @@ export default function AcquisitionWidget() {
     <>
       <div className="vip-widget-container">
         <div className="vip-pill" onClick={() => setIsModalOpen(true)}>
-          <Gift size={24} className="vip-pill__icon" />
+          <Wine size={28} className="vip-pill__icon" />
           <h3 className="vip-pill__title">{config.title}</h3>
           <p className="vip-pill__desc">{config.description}</p>
+          <p className="vip-pill__explanation">{config.explanation}</p>
+          
+          <button className="btn btn--gold vip-pill__btn">
+            {config.ctaText}
+          </button>
+          
+          <div className="vip-pill__trust">
+            <span className="trust-item"><Check size={12} /> Delivered instantly to WhatsApp</span>
+            <span className="trust-item"><Check size={12} /> Takes less than 30 seconds</span>
+            <span className="trust-item"><Check size={12} /> One reward per guest</span>
+          </div>
         </div>
       </div>
 

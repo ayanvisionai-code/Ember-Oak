@@ -101,7 +101,7 @@ export default function AcquisitionModal({ isOpen, onClose }) {
                   <input type="tel" id="whatsapp" name="whatsapp" className="vip-form__input" required placeholder="+1 234 567 8900" value={formData.whatsapp} onChange={handleChange} disabled={status === 'loading'} />
                 </div>
 
-                <button type="submit" className="btn btn--primary mt-sm" disabled={status === 'loading'} style={{ width: '100%', minHeight: '48px', position: 'relative' }}>
+                <button type="submit" className="btn btn--gold mt-sm" disabled={status === 'loading'} style={{ width: '100%', minHeight: '48px', position: 'relative' }}>
                   {status === 'loading' ? 'Processing...' : config.ctaText}
                 </button>
                 
@@ -111,22 +111,23 @@ export default function AcquisitionModal({ isOpen, onClose }) {
           ) : status === 'success_new' ? (
             <div className="vip-status">
               <CheckCircle size={64} className="vip-status__icon" />
-              <h2 className="vip-status__title">Congratulations!</h2>
+              <h2 className="vip-status__title">Thank You.</h2>
               <div className="vip-status__box">
                 <p className="vip-status__text">
-                  Your welcome reward has been generated successfully. <br /><br />
-                  Your coupon has been sent to your WhatsApp number. <br />
-                  Please show the coupon when visiting the restaurant.
+                  Your welcome reward has been prepared. <br /><br />
+                  Your reward has been sent securely to your WhatsApp. <br />
+                  Please present your WhatsApp message when visiting the restaurant.<br /><br />
+                  We look forward to welcoming you.
                 </p>
               </div>
             </div>
           ) : status === 'success_existing' ? (
             <div className="vip-status">
               <Gift size={64} className="vip-status__icon" />
-              <h2 className="vip-status__title">Welcome Back!</h2>
+              <h2 className="vip-status__title">Welcome Back.</h2>
               <div className="vip-status__box">
                 <p className="vip-status__text">
-                  It looks like you have already claimed your first-visit reward. <br /><br />
+                  It appears you've already claimed your first-visit reward. <br /><br />
                   We look forward to serving you again.
                 </p>
               </div>
@@ -137,8 +138,8 @@ export default function AcquisitionModal({ isOpen, onClose }) {
               <h2 className="vip-status__title">We're sorry.</h2>
               <div className="vip-status__box">
                 <p className="vip-status__text">
-                  Something went wrong while processing your request. <br />
-                  Please try again in a few minutes.
+                  We couldn't process your request at the moment. <br />
+                  Please try again shortly.
                 </p>
               </div>
               <button className="btn btn--secondary mt-sm" onClick={() => setStatus('idle')}>
