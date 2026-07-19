@@ -8,6 +8,7 @@ import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingActionButtons from './components/FloatingActionButtons';
+import AcquisitionWidget from './components/AcquisitionWidget/AcquisitionWidget';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       </main>
       <Footer />
       <FloatingActionButtons />
+      <AcquisitionWidget />
     </Router>
   );
 }

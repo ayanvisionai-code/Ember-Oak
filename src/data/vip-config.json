@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "title": "Claim Your Welcome Gift",
+  "description": "Enjoy a complimentary reward on your first visit.",
+  "rewardTitle": "Free Dessert",
+  "ctaText": "Claim My Gift",
+  "webhookUrl": "https://hook.us1.make.com/mock-webhook-endpoint",
+  "expirationDays": 14
+}

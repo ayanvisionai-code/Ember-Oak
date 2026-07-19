@@ -1,0 +1,229 @@
+/* Container for the pill/widget */
+.vip-widget-container {
+  position: fixed;
+  z-index: 1000;
+  transition: all var(--transition-normal);
+}
+
+/* Desktop: Right aligned, vertically centered */
+@media (min-width: 769px) {
+  .vip-widget-container {
+    top: 50%;
+    right: 24px;
+    transform: translateY(-50%);
+  }
+}
+
+/* Mobile: Stacked above existing FABs */
+@media (max-width: 768px) {
+  .vip-widget-container {
+    bottom: 160px; /* Positioned above WhatsApp/Calendar */
+    right: var(--spacing-md);
+  }
+}
+
+.vip-pill {
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-gold);
+  border-radius: 20px;
+  padding: 16px 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: var(--color-warm-white);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vip-pill:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+}
+
+.vip-pill__icon {
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.vip-pill__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.vip-pill__desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Desktop uses a wider widget */
+@media (min-width: 769px) {
+  .vip-pill {
+    width: 280px;
+  }
+}
+
+/* Mobile uses a compact version */
+@media (max-width: 768px) {
+  .vip-pill {
+    padding: 12px 16px;
+    border-radius: 30px;
+    flex-direction: row;
+    gap: 12px;
+    width: auto;
+  }
+  .vip-pill__icon {
+    margin-bottom: 0;
+  }
+  .vip-pill__title {
+    font-size: 1rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+  .vip-pill__desc {
+    display: none;
+  }
+}
+
+/* Modal Overlay */
+.vip-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Modal Box */
+.vip-modal {
+  background: rgba(15, 15, 15, 0.95);
+  border: 1px solid var(--color-gold);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 480px;
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+  color: var(--color-warm-white);
+  text-align: center;
+}
+
+.vip-modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 4px;
+}
+
+.vip-modal__close:hover {
+  color: var(--color-gold);
+}
+
+.vip-modal__header {
+  margin-bottom: 30px;
+}
+
+.vip-modal__title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+
+.vip-modal__desc {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.vip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.vip-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vip-form__label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.vip-form__input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: white;
+  font-family: var(--font-body);
+  transition: border-color 0.3s;
+}
+
+.vip-form__input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+.vip-form__privacy {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Status Views */
+.vip-status {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.vip-status__icon {
+  color: var(--color-gold);
+  margin-bottom: 10px;
+}
+
+.vip-status__title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: white;
+}
+
+.vip-status__text {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+.vip-status__box {
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px dashed var(--color-gold);
+  padding: 16px;
+  border-radius: 12px;
+  margin-top: 10px;
+  width: 100%;
+}
