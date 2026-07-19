@@ -1,0 +1,77 @@
+{
+  "categories": ["Breakfast", "Lunch", "Dinner", "Desserts", "Drinks"],
+  "items": [
+    {
+      "id": "1",
+      "name": "Truffle Scrambled Eggs",
+      "description": "Farm fresh eggs softly scrambled with black truffle shavings, served on toasted artisanal sourdough.",
+      "price": "24",
+      "category": "Breakfast",
+      "tags": ["Vegetarian", "Chef Recommended"],
+      "image": "https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "2",
+      "name": "Avocado Tartine",
+      "description": "Crushed avocado, heirloom cherry tomatoes, radish, and micro-cilantro with a drizzle of lemon-infused olive oil.",
+      "price": "18",
+      "category": "Breakfast",
+      "tags": ["Vegan", "Gluten Free Option"],
+      "image": "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "3",
+      "name": "Wagyu Beef Burger",
+      "description": "8oz Wagyu patty, aged cheddar, caramelized onions, and house-made truffle aioli on a brioche bun. Served with hand-cut fries.",
+      "price": "32",
+      "category": "Lunch",
+      "tags": ["Popular"],
+      "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "4",
+      "name": "Seared Scallops",
+      "description": "Pan-seared diver scallops, cauliflower purée, crispy pancetta, and a brown butter caper sauce.",
+      "price": "38",
+      "category": "Dinner",
+      "tags": ["Seafood", "Popular"],
+      "image": "https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "5",
+      "name": "Dry-Aged Ribeye",
+      "description": "14oz 45-day dry-aged bone-in ribeye, served with roasted garlic bone marrow butter and a side of duck fat potatoes.",
+      "price": "85",
+      "category": "Dinner",
+      "tags": ["Chef Recommended", "Popular"],
+      "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "6",
+      "name": "Mushroom Risotto",
+      "description": "Arborio rice cooked in a rich wild mushroom broth, finished with aged Parmigiano-Reggiano and white truffle oil.",
+      "price": "28",
+      "category": "Dinner",
+      "tags": ["Vegetarian"],
+      "image": "https://images.unsplash.com/photo-1626200419199-391ae4be7a41?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "7",
+      "name": "Valrhona Chocolate Soufflé",
+      "description": "Classic French soufflé made with 70% dark Valrhona chocolate, served with Tahitian vanilla bean crème anglaise.",
+      "price": "16",
+      "category": "Desserts",
+      "tags": ["Vegetarian", "Allow 20 mins"],
+      "image": "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      "id": "8",
+      "name": "Signature Old Fashioned",
+      "description": "Japanese whisky, smoked maple syrup, Angostura bitters, garnished with a flamed orange peel over a large ice sphere.",
+      "price": "22",
+      "category": "Drinks",
+      "tags": ["Alcoholic"],
+      "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80"
+    }
+  ]
+}

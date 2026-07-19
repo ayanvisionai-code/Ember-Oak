@@ -1,0 +1,21 @@
+{
+  "name": "Ember & Oak",
+  "tagline": "Modern Elegance. Timeless Flavor.",
+  "address": "124 Luxury Avenue, Culinary District, NY 10012",
+  "phone": "+1 (212) 555-0199",
+  "email": "reservations@emberandoak.com",
+  "hours": {
+    "monday": "Closed",
+    "tuesday": "5:00 PM - 10:30 PM",
+    "wednesday": "5:00 PM - 10:30 PM",
+    "thursday": "5:00 PM - 10:30 PM",
+    "friday": "5:00 PM - 11:30 PM",
+    "saturday": "4:00 PM - 11:30 PM",
+    "sunday": "4:00 PM - 9:30 PM"
+  },
+  "socials": {
+    "instagram": "https://instagram.com/emberandoak",
+    "facebook": "https://facebook.com/emberandoak",
+    "twitter": "https://twitter.com/emberandoak"
+  }
+}

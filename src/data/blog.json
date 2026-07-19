@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "title": "The Art of Dry Aging: Why Our Steaks Taste Different",
+    "excerpt": "Discover the meticulous process behind our 45-day dry-aged steaks and how it transforms the texture and flavor profile of the beef.",
+    "category": "Chef Stories",
+    "author": "Chef Marcus Thorne",
+    "date": "October 12, 2026",
+    "readTime": "5 min read",
+    "image": "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "2",
+    "title": "Spring Menu Unveiled: Foraging for Local Flavors",
+    "excerpt": "Our new seasonal menu highlights wild ingredients foraged from local forests, bringing earthy and vibrant flavors to your plate.",
+    "category": "Seasonal Specials",
+    "author": "Elena Rossi",
+    "date": "September 28, 2026",
+    "readTime": "4 min read",
+    "image": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "3",
+    "title": "Mastering the Perfect Truffle Risotto at Home",
+    "excerpt": "Chef Marcus shares his secrets for achieving the perfect creamy consistency and balancing the delicate aroma of white truffles.",
+    "category": "Recipes",
+    "author": "Chef Marcus Thorne",
+    "date": "September 15, 2026",
+    "readTime": "7 min read",
+    "image": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "4",
+    "title": "Pairing Wine with Aged Steaks",
+    "excerpt": "Our sommelier guides you through the nuances of selecting the perfect vintage to complement the bold flavors of our signature cuts.",
+    "category": "Wine & Spirits",
+    "author": "Julian Mercer",
+    "date": "August 22, 2026",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80"
+  }
+]

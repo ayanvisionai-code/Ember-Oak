@@ -1,0 +1,75 @@
+:root {
+  /* Colors - Primary */
+  --color-warm-white: #FCFBF9;
+  --color-cream: #F9F6F0;
+  --color-off-white: #F4F1EB;
+  --color-soft-beige: #E6E2D6;
+  --color-dark-charcoal: #1A1A1A;
+  --color-deep-black: #0A0A0A;
+  
+  /* Colors - Accent */
+  --color-burnt-orange: #B84A14;
+  --color-warm-gold: #B8975E; /* Muted, elegant champagne gold */
+  --color-olive-green: #565C47;
+  --color-earth-brown: #7A5C53;
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing - Dramatically Increased for Premium Feel */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 5rem;
+  --spacing-2xl: 8rem;
+  --spacing-3xl: 12rem;
+  --spacing-4xl: 16rem;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows - Much softer and more diffused */
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.05);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,0.07);
+  --shadow-premium: 0 30px 60px rgba(0,0,0,0.1);
+
+  /* Transitions */
+  --transition-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 1s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Layout */
+  --max-width: 1440px;
+  --container-padding: 6vw;
+}
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+  :root {
+    --container-padding: 4vw;
+    --spacing-xl: 4rem;
+    --spacing-2xl: 6rem;
+    --spacing-3xl: 8rem;
+    --spacing-4xl: 10rem;
+  }
+}
+
+/* Mobile (320px - 767px) */
+@media (max-width: 767px) {
+  :root {
+    --container-padding: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    --spacing-3xl: 5rem;
+    --spacing-4xl: 6rem;
+  }
+}

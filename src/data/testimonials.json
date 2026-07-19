@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "author": "Eleanor Vance",
+    "rating": 5,
+    "text": "An absolute revelation. The tasting menu took us on a culinary journey that I will never forget. The service was impeccable and the ambiance is unmatched in the city.",
+    "source": "Google Reviews",
+    "date": "1 week ago",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    "id": "2",
+    "author": "James Harrington",
+    "rating": 5,
+    "text": "The dry-aged ribeye is quite simply the best steak I have ever had. From the moment you walk in, you are treated like royalty. Highly recommend for special occasions.",
+    "source": "Google Reviews",
+    "date": "3 weeks ago",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80"
+  },
+  {
+    "id": "3",
+    "author": "Sophia Chen",
+    "rating": 5,
+    "text": "Beautiful interior, warm lighting, and every dish was plated like a work of art. The Valrhona chocolate soufflé is a must-order.",
+    "source": "Yelp",
+    "date": "1 month ago",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80"
+  }
+]
