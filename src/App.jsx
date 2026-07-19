@@ -6,6 +6,8 @@ import About from './pages/About';
 import Menu from './pages/Menu';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
 import ScrollToTop from './components/ScrollToTop';
 import FloatingActionButtons from './components/FloatingActionButtons';
 import AcquisitionWidget from './components/AcquisitionWidget/AcquisitionWidget';
@@ -22,6 +24,8 @@ function App() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
         </Routes>
       </main>
       <Footer />

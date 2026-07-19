@@ -11,6 +11,7 @@ const normalizeWhatsApp = (number) => {
 export default function AcquisitionModal({ isOpen, onClose }) {
   const [status, setStatus] = useState('idle'); // idle, loading, success_new, success_existing, error
   const [formData, setFormData] = useState({ fullName: '', email: '', whatsapp: '' });
+  const [isAgreed, setIsAgreed] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -100,12 +101,21 @@ export default function AcquisitionModal({ isOpen, onClose }) {
                   <label className="vip-form__label" htmlFor="whatsapp">WhatsApp Number</label>
                   <input type="tel" id="whatsapp" name="whatsapp" className="vip-form__input" required placeholder="+1 234 567 8900" value={formData.whatsapp} onChange={handleChange} disabled={status === 'loading'} />
                 </div>
+                
+                <div className="vip-form__consent">
+                  <label className="vip-form__consent-label">
+                    <input type="checkbox" checked={isAgreed} onChange={(e) => setIsAgreed(e.target.checked)} disabled={status === 'loading'} />
+                    <span>
+                      By claiming your welcome gift, I agree to the <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="/terms-conditions" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>.
+                    </span>
+                  </label>
+                </div>
 
-                <button type="submit" className="btn btn--gold mt-sm" disabled={status === 'loading'} style={{ width: '100%', minHeight: '48px', position: 'relative' }}>
+                <button type="submit" className="btn btn--gold mt-sm" disabled={status === 'loading' || !isAgreed} style={{ width: '100%', minHeight: '48px', position: 'relative' }}>
                   {status === 'loading' ? 'Processing...' : config.ctaText}
                 </button>
                 
-                <p className="vip-form__privacy">We only use your details to deliver your welcome reward.</p>
+                <p className="vip-form__reassurance">We only use your information to deliver your welcome reward and improve your dining experience.</p>
               </form>
             </>
           ) : status === 'success_new' ? (

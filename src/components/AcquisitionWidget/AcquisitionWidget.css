@@ -112,7 +112,13 @@
   align-items: center;
   letter-spacing: 0.5px;
 }
-
+.btn--gold:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
 .btn--gold:hover {
   background-position: right center;
   transform: translateY(-2px);
@@ -249,11 +255,45 @@
   border-color: var(--color-gold);
 }
 
-.vip-form__privacy {
+.vip-form__consent {
+  margin-top: 8px;
+}
+
+.vip-form__consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.vip-form__consent-label input[type="checkbox"] {
+  margin-top: 3px;
+  accent-color: var(--color-gold);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.vip-form__consent-label a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.vip-form__consent-label a:hover {
+  color: var(--color-gold);
+}
+
+.vip-form__reassurance {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.4);
   text-align: center;
   margin-top: 8px;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
 /* Status Views */

@@ -63,8 +63,8 @@ export default function Footer() {
         <div className="container footer__bottom-container">
           <p>&copy; {new Date().getFullYear()} {restaurantInfo.name}. All rights reserved.</p>
           <div className="footer__legal">
-            <Link to="#">Privacy Policy</Link>
-            <Link to="#">Terms of Service</Link>
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <Link to="/terms-conditions">Terms & Conditions</Link>
           </div>
         </div>
       </div>
