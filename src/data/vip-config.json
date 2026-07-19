@@ -2,7 +2,7 @@
   "enabled": true,
   "title": "Exclusive First Visit Reward",
   "description": "Enjoy a complimentary mocktail during your first dining experience.",
-  "explanation": "Complete a quick 30-second form and your welcome reward will be delivered securely to your WhatsApp.",
+  "explanation": "Complete a quick 30-second form and receive your welcome reward instantly on WhatsApp.",
   "rewardTitle": "Complimentary Mocktail",
   "ctaText": "Claim My Welcome Gift",
   "webhookUrl": "https://hook.us1.make.com/mock-webhook-endpoint",

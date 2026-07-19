@@ -2,14 +2,14 @@
 .vip-widget-container {
   position: fixed;
   z-index: 1000;
-  transition: all var(--transition-normal);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Desktop: Right aligned, vertically centered */
 @media (min-width: 769px) {
   .vip-widget-container {
     top: 50%;
-    right: 24px;
+    right: max(24px, calc((100vw - 1240px) / 2));
     transform: translateY(-50%);
   }
 }
@@ -23,13 +23,13 @@
 }
 
 .vip-pill {
-  background: rgba(15, 15, 15, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 20px;
-  padding: 32px 24px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  background: rgba(12, 12, 12, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   color: var(--color-warm-white);
   cursor: pointer;
   display: flex;
@@ -41,8 +41,8 @@
 
 .vip-pill:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
-  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow: 0 15px 50px rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.5);
 }
 
 .vip-pill__icon {
@@ -52,37 +52,38 @@
 
 .vip-pill__title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 500;
-  margin-bottom: 8px;
+  color: var(--color-gold);
+  margin-bottom: 6px;
   letter-spacing: 0.5px;
 }
 
 .vip-pill__desc {
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   line-height: 1.4;
 }
 
 .vip-pill__explanation {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 24px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 20px;
   line-height: 1.5;
 }
 
 .vip-pill__btn {
   width: 100%;
-  margin-bottom: 16px;
-  padding: 14px 20px;
-  font-size: 1rem;
+  margin-bottom: 12px;
+  padding: 16px 20px;
+  font-size: 1.05rem;
 }
 
 .vip-pill__trust {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   align-items: center;
 }
 
@@ -91,35 +92,37 @@
   align-items: center;
   gap: 6px;
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
 }
 
 /* Gold Button Style */
 .btn--gold {
-  background: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  background: linear-gradient(135deg, #CFB069, #FCF6BA, #CFB069);
   background-size: 200% auto;
   color: #1a1a1a !important;
   border: none;
   font-weight: 600;
   border-radius: 8px;
-  transition: all 0.4s ease;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  letter-spacing: 0.5px;
 }
 
 .btn--gold:hover {
   background-position: right center;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
 /* Desktop uses a wider widget */
 @media (min-width: 769px) {
   .vip-pill {
-    width: 280px;
+    width: 320px;
   }
 }
 

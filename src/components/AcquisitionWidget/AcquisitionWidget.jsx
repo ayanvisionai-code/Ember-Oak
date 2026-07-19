@@ -1,5 +1,5 @@
 import { useState, lazy, Suspense } from 'react';
-import { Wine, Check } from 'lucide-react';
+import { ConciergeBell, Check } from 'lucide-react';
 import config from '../../data/vip-config.json';
 import './AcquisitionWidget.css';
 
@@ -14,7 +14,7 @@ export default function AcquisitionWidget() {
     <>
       <div className="vip-widget-container">
         <div className="vip-pill" onClick={() => setIsModalOpen(true)}>
-          <Wine size={28} className="vip-pill__icon" />
+          <ConciergeBell size={26} className="vip-pill__icon" strokeWidth={1.5} />
           <h3 className="vip-pill__title">{config.title}</h3>
           <p className="vip-pill__desc">{config.description}</p>
           <p className="vip-pill__explanation">{config.explanation}</p>

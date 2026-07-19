@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Gift, CheckCircle, AlertCircle } from 'lucide-react';
+import { X, ConciergeBell, CheckCircle, AlertCircle } from 'lucide-react';
 import config from '../../data/vip-config.json';
 import './AcquisitionWidget.css';
 
@@ -68,19 +68,19 @@ export default function AcquisitionModal({ isOpen, onClose }) {
       <div className="vip-modal-overlay">
         <motion.div 
           className="vip-modal"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, scale: 0.95, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 10 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <button className="vip-modal__close" onClick={onClose} aria-label="Close modal">
-            <X size={24} />
+            <X size={24} strokeWidth={1.5} />
           </button>
 
           {status === 'idle' || status === 'loading' ? (
             <>
               <div className="vip-modal__header">
-                <Gift size={40} className="text-accent mb-sm mx-auto" style={{ display: 'block' }} />
+                <ConciergeBell size={44} className="text-accent mb-sm mx-auto" style={{ display: 'block' }} strokeWidth={1.5} />
                 <h2 className="vip-modal__title">{config.title}</h2>
                 <p className="vip-modal__desc">{config.description}</p>
               </div>
@@ -123,7 +123,7 @@ export default function AcquisitionModal({ isOpen, onClose }) {
             </div>
           ) : status === 'success_existing' ? (
             <div className="vip-status">
-              <Gift size={64} className="vip-status__icon" />
+              <ConciergeBell size={64} className="vip-status__icon" strokeWidth={1.5} />
               <h2 className="vip-status__title">Welcome Back.</h2>
               <div className="vip-status__box">
                 <p className="vip-status__text">
