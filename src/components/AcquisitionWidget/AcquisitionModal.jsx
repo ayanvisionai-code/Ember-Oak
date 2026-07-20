@@ -47,15 +47,36 @@ export default function AcquisitionModal({ isOpen, onClose }) {
         body: JSON.stringify(payload)
       });
       
+      console.log('Webhook Raw Response Object:', res);
+
       if (!res.ok) {
         setStatus('network_error');
         return;
       }
 
-      const data = await res.json();
+      // Clone response to safely log and parse
+      const resClone = res.clone();
+      try {
+        console.log('Webhook Raw JSON String:', await resClone.text());
+      } catch (e) {
+        console.log('Could not read raw text from response');
+      }
+
+      let rawData = await res.json();
+      console.log('Webhook Parsed JSON:', rawData);
       
+      // If n8n returns an array (default behavior when not "First Entry JSON"), extract the first item
+      const data = Array.isArray(rawData) && rawData.length > 0 ? rawData[0] : rawData;
+      
+      // Dynamically extract keys regardless of casing
+      const normalizedData = {
+        title: data.title || data.Title || data.TITLE || '',
+        message: data.message || data.Message || data.MESSAGE || '',
+        messageType: (data.messageType || data.MessageType || data.MESSAGETYPE || data.type || data.Type || '').toLowerCase()
+      };
+
       // Trust n8n response completely
-      setResponseData(data);
+      setResponseData(normalizedData);
       setStatus('done');
       
     } catch (err) {
