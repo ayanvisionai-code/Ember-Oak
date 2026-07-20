@@ -1,54 +1,17 @@
-/* Container for the pill/widget */
-.vip-widget-container {
+/* Unified Floating Widget */
+.vip-widget-shared {
   position: fixed;
   z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+  will-change: transform, opacity, border-radius, width, height, padding;
+  /* Use hardware accelerated transition properties for color/box-shadow */
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Position when Hero is visible (Large card state) */
-.vip-widget-container--hero {
-  left: auto;
-  bottom: auto;
-}
-
-@media (min-width: 769px) {
-  .vip-widget-container--hero {
-    top: 50%;
-    right: max(24px, calc((100vw - 1240px) / 2));
-    transform: translateY(-50%);
-  }
-}
-
-@media (max-width: 768px) {
-  .vip-widget-container--hero {
-    bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom, 0px));
-    left: var(--spacing-md);
-    right: auto;
-    width: 290px;
-    max-width: calc(100vw - 32px);
-  }
-}
-
-/* Position when Hero leaves view (Compact pill state) */
-.vip-widget-container--compact {
-  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-  left: 24px;
-  right: auto;
-  top: auto;
-  transform: none;
-}
-
-@media (max-width: 768px) {
-  .vip-widget-container--compact {
-    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-    left: 16px;
-    right: auto;
-    top: auto;
-    transform: none;
-  }
-}
-
-.vip-pill {
+/* State 1: Full Hero VIP Card */
+.vip-widget-shared--hero {
   background: rgba(12, 12, 12, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -57,18 +20,124 @@
   padding: 28px 24px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   color: var(--color-warm-white);
-  cursor: pointer;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.vip-pill:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 15px 50px rgba(212, 175, 55, 0.15);
-  border-color: rgba(212, 175, 55, 0.5);
+@media (min-width: 769px) {
+  .vip-widget-shared--hero {
+    top: 50%;
+    margin-top: -190px; /* Centering offset instead of transform to avoid framer conflicts */
+    right: max(24px, calc((100vw - 1240px) / 2));
+    width: 320px;
+    left: auto;
+    bottom: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .vip-widget-shared--hero {
+    bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom, 0px));
+    left: var(--spacing-md);
+    right: auto;
+    width: 290px;
+    max-width: calc(100vw - 32px);
+    top: auto;
+    margin-top: 0;
+  }
+}
+
+/* State 2: Compact Invitation Pill */
+.vip-widget-shared--compact {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-gold);
+  border-radius: 30px;
+  padding: 12px 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: var(--color-warm-white);
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 769px) {
+  .vip-widget-shared--compact {
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    left: 24px;
+    right: auto;
+    top: auto;
+    width: 170px;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .vip-widget-shared--compact {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    left: 16px;
+    right: auto;
+    top: auto;
+    width: 170px;
+    margin-top: 0;
+  }
+}
+
+.vip-widget-shared--scrolling {
+  opacity: 0.6;
+}
+
+/* Inner content wrappers and transitions */
+.vip-widget-content-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.vip-content-hero {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.vip-content-hero.vip-content-hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+}
+
+.vip-content-compact {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 100%;
+}
+
+.vip-content-compact.vip-content-hidden {
+  opacity: 0;
+  transform: scale(0.95);
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
 }
 
 .vip-pill__icon {
@@ -138,6 +207,7 @@
   align-items: center;
   letter-spacing: 0.5px;
 }
+
 .btn--gold:disabled {
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.3) !important;
@@ -145,62 +215,11 @@
   cursor: not-allowed;
   transform: none;
 }
+
 .btn--gold:hover {
   background-position: right center;
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-}
-
-/* Desktop uses a wider widget */
-@media (min-width: 769px) {
-  .vip-pill {
-    width: 320px;
-  }
-}
-
-/* Mobile uses a premium card layout */
-@media (max-width: 768px) {
-  .vip-pill {
-    padding: 20px;
-    border-radius: 16px;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-    width: 100%;
-    background: rgba(10, 10, 10, 0.95);
-    border: 1px solid var(--color-gold);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  }
-  .vip-pill__icon {
-    margin-bottom: 4px;
-    display: block;
-  }
-  .vip-pill__title {
-    font-size: 1.15rem;
-    margin-bottom: 2px;
-    white-space: normal;
-  }
-  .vip-pill__desc {
-    display: block;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 12px;
-    line-height: 1.45;
-  }
-  .vip-pill__btn {
-    display: inline-flex;
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 0.95rem;
-    margin-bottom: 0;
-    justify-content: center;
-    min-height: 48px;
-  }
-  .vip-pill__explanation,
-  .vip-pill__trust {
-    display: none;
-  }
 }
 
 /* Modal Overlay */
@@ -434,33 +453,6 @@
   margin-bottom: 24px;
   width: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Compact Luxury Pill Button */
-.vip-pill-compact {
-  background: rgba(10, 10, 10, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--color-gold);
-  border-radius: 30px;
-  padding: 12px 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  color: var(--color-warm-white);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 48px;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.vip-pill-compact:hover {
-  border-color: rgba(212, 175, 55, 0.8);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 .vip-pill-compact__icon {
