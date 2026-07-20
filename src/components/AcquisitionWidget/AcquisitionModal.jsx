@@ -8,6 +8,35 @@ const normalizeWhatsApp = (number) => {
   return number.replace(/\D/g, '');
 };
 
+const extractData = (obj) => {
+  if (!obj) return {};
+  
+  if (typeof obj === 'string') {
+    try {
+      obj = JSON.parse(obj);
+    } catch (e) {
+      return { message: obj };
+    }
+  }
+  
+  if (Array.isArray(obj)) {
+    return extractData(obj[0]);
+  }
+  
+  // Recursively extract if nested in body, data, or output
+  if (obj.body && typeof obj.body === 'object') {
+    return extractData(obj.body);
+  }
+  if (obj.data && typeof obj.data === 'object') {
+    return extractData(obj.data);
+  }
+  if (obj.output && typeof obj.output === 'object') {
+    return extractData(obj.output);
+  }
+  
+  return obj;
+};
+
 const getTheme = (type) => {
   switch (type) {
     case 'success': return { color: '#52c41a', bg: 'rgba(82, 196, 26, 0.1)', border: '#52c41a' };
@@ -23,6 +52,8 @@ export default function AcquisitionModal({ isOpen, onClose }) {
   const [responseData, setResponseData] = useState(null);
   const [formData, setFormData] = useState({ fullName: '', email: '', whatsapp: '' });
   const [isAgreed, setIsAgreed] = useState(false);
+
+  console.log('AcquisitionModal render - status:', status, 'responseData:', responseData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -65,22 +96,32 @@ export default function AcquisitionModal({ isOpen, onClose }) {
       let rawData = await res.json();
       console.log('Webhook Parsed JSON:', rawData);
       
-      // If n8n returns an array (default behavior when not "First Entry JSON"), extract the first item
-      const data = Array.isArray(rawData) && rawData.length > 0 ? rawData[0] : rawData;
+      const parsed = extractData(rawData);
+      console.log('Extracted/Normalized Data Object:', parsed);
       
-      // Dynamically extract keys regardless of casing
+      let defaultType = 'info';
+      if (parsed.success === true || parsed.success === 'true') {
+        defaultType = 'success';
+      } else if (parsed.success === false || parsed.success === 'false') {
+        defaultType = 'error';
+      }
+      
+      const rawType = parsed.messageType || parsed.MessageType || parsed.MESSAGETYPE || parsed.type || parsed.Type || parsed.status || parsed.Status || parsed.STATUS || defaultType;
+      
       const normalizedData = {
-        title: data.title || data.Title || data.TITLE || '',
-        message: data.message || data.Message || data.MESSAGE || '',
-        messageType: (data.messageType || data.MessageType || data.MESSAGETYPE || data.type || data.Type || '').toLowerCase()
+        title: parsed.title || parsed.Title || parsed.TITLE || '',
+        message: parsed.message || parsed.Message || parsed.MESSAGE || parsed.msg || parsed.Msg || parsed.MSG || '',
+        messageType: rawType.toString().toLowerCase()
       };
 
+      console.log('Setting responseData to:', normalizedData);
+      
       // Trust n8n response completely
       setResponseData(normalizedData);
       setStatus('done');
       
     } catch (err) {
-      // Network failure or JSON parse failure
+      console.error('Fetch operation failed:', err);
       setStatus('network_error');
     }
   };
