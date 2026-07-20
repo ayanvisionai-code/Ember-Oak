@@ -10,11 +10,12 @@ const normalizeWhatsApp = (number) => {
 
 const getTheme = (type) => {
   switch (type) {
-    case 'success': return { color: '#52c41a', bg: 'rgba(82, 196, 26, 0.1)', border: '#52c41a' };
-    case 'info': return { color: '#1890ff', bg: 'rgba(24, 144, 255, 0.1)', border: '#1890ff' };
-    case 'warning': return { color: '#faad14', bg: 'rgba(250, 173, 20, 0.1)', border: '#faad14' };
-    case 'error': return { color: '#ff4d4f', bg: 'rgba(255, 77, 79, 0.1)', border: '#ff4d4f' };
-    default: return { color: 'var(--color-gold)', bg: 'rgba(212, 175, 55, 0.1)', border: 'var(--color-gold)' };
+    case 'error': return { color: '#ff4d4f', bg: 'rgba(255, 77, 79, 0.05)', border: 'rgba(255, 77, 79, 0.3)' };
+    default: return { 
+      color: 'var(--color-gold)', 
+      bg: 'linear-gradient(145deg, rgba(25, 25, 25, 0.9) 0%, rgba(15, 15, 15, 0.95) 100%)', 
+      border: 'rgba(212, 175, 55, 0.25)' 
+    };
   }
 };
 
@@ -185,22 +186,22 @@ export default function AcquisitionModal({ isOpen, onClose }) {
             </>
           ) : status === 'done' && responseData ? (
             <div className="vip-status">
-              {responseData.messageType === 'success' && <CheckCircle size={64} style={{ color: theme.color, marginBottom: '10px' }} />}
-              {responseData.messageType === 'info' && <Info size={64} style={{ color: theme.color, marginBottom: '10px' }} />}
-              {responseData.messageType === 'warning' && <AlertTriangle size={64} style={{ color: theme.color, marginBottom: '10px' }} />}
-              {responseData.messageType === 'error' && <AlertCircle size={64} style={{ color: theme.color, marginBottom: '10px' }} />}
-              {(!responseData.messageType || !['success', 'info', 'warning', 'error'].includes(responseData.messageType)) && <ConciergeBell size={64} style={{ color: theme.color, marginBottom: '10px' }} />}
+              {responseData.messageType === 'success' && <CheckCircle size={64} className="vip-status__icon-glow" style={{ color: theme.color, marginBottom: '16px' }} strokeWidth={1.2} />}
+              {responseData.messageType === 'info' && <Info size={64} className="vip-status__icon-glow" style={{ color: theme.color, marginBottom: '16px' }} strokeWidth={1.2} />}
+              {responseData.messageType === 'warning' && <AlertTriangle size={64} className="vip-status__icon-glow" style={{ color: theme.color, marginBottom: '16px' }} strokeWidth={1.2} />}
+              {responseData.messageType === 'error' && <AlertCircle size={64} style={{ color: theme.color, marginBottom: '16px' }} strokeWidth={1.2} />}
+              {(!responseData.messageType || !['success', 'info', 'warning', 'error'].includes(responseData.messageType)) && <ConciergeBell size={64} className="vip-status__icon-glow" style={{ color: theme.color, marginBottom: '16px' }} strokeWidth={1.2} />}
 
-              <h2 className="vip-status__title">{responseData.title}</h2>
+              {responseData.title && <h2 className="vip-status__title">{responseData.title}</h2>}
               <div className="vip-status__box" style={{ background: theme.bg, borderColor: theme.border }}>
                 <p className="vip-status__text">
                   {responseData.message}
                 </p>
               </div>
               <button 
-                className="btn mt-sm" 
+                className="btn btn--gold mt-sm" 
                 onClick={onClose} 
-                style={{ width: '100%', backgroundColor: theme.color, color: '#fff', border: 'none', fontWeight: 600, padding: '14px 20px', borderRadius: '8px' }}
+                style={{ width: '100%', minHeight: '48px', position: 'relative' }}
               >
                 Done
               </button>
