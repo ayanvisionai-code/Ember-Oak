@@ -152,42 +152,55 @@
 
 @media (max-width: 767px) {
   .hero {
-    padding-top: 100px;
-    align-items: flex-start; /* Move content up on mobile */
-    padding-bottom: 2rem;
+    padding-top: calc(80px + env(safe-area-inset-top, 0px));
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-bottom: 3rem;
   }
   
   .hero__content {
-    margin-top: 10vh;
+    margin-top: 0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero__title {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero__subtitle {
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.5;
   }
 
   .hero__actions {
     flex-direction: column;
     width: 100%;
+    gap: 12px;
+    margin-bottom: var(--spacing-xl);
   }
 
   .hero__actions .btn {
     width: 100%;
     text-align: center;
     justify-content: center;
+    min-height: 48px;
   }
-}
 
-.hero__info {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
+  .hero__info {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+  }
 
-.hero__dot {
-  margin: 0 var(--spacing-xs);
-}
-
-.hero__availability {
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  .hero__dot {
+    display: none;
+  }
 }
 
 /* Featured Dishes - Asymmetrical Grid */
@@ -526,16 +539,63 @@
 }
 
 .final-cta__content h2 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   color: var(--color-warm-white);
 }
 
 .final-cta__content p {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: rgba(255,255,255,0.7);
   font-weight: 300;
 }
 
 .text-white {
   color: white !important;
+}
+
+/* Comprehensive Home Mobile Overrides */
+@media (max-width: 767px) {
+  .section-padding {
+    padding: var(--spacing-2xl) 0;
+  }
+  .featured__img-premium {
+    height: 300px;
+  }
+  .philosophy__image-wrapper {
+    height: 350px;
+  }
+  .philosophy__desc {
+    font-size: 1.05rem;
+  }
+  .final-cta {
+    padding: var(--spacing-2xl) 0;
+  }
+  .final-cta__content p {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured__img-premium {
+    height: 240px;
+  }
+  .philosophy__image-wrapper {
+    height: 280px;
+  }
+  .testimonial-card {
+    padding: 1.5rem !important;
+    min-height: 280px !important;
+  }
+  .testimonial-card__text {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .testimonial-card__author {
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+  .testimonial-card__author img {
+    width: 48px;
+    height: 48px;
+  }
 }

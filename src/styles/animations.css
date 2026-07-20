@@ -48,22 +48,32 @@
   animation: clipReveal 1.2s var(--transition-spring) forwards;
 }
 
-/* Hover effects */
-.hover-lift {
-  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+/* Hover effects wrapped in hover query for mobile performance */
+@media (hover: hover) {
+  .hover-lift {
+    transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-premium);
+  }
+
+  .hover-glow {
+    transition: box-shadow var(--transition-slow);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(184, 151, 94, 0.2); /* muted warm gold glow */
+  }
 }
 
-.hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-premium);
-}
-
-.hover-glow {
-  transition: box-shadow var(--transition-slow);
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(184, 151, 94, 0.2); /* muted warm gold glow */
+/* Touch active fallback for mobile */
+@media (hover: none) {
+  .hover-lift:active {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
 }
 
 /* Pulsing CTA for conversion */
@@ -81,7 +91,6 @@
 .img-reveal-wrapper {
   overflow: hidden;
   position: relative;
-  /* Add subtle overlay for text legibility if needed, or just keep pure */
 }
 
 .img-reveal-wrapper img {
@@ -89,8 +98,10 @@
   will-change: transform;
 }
 
-.img-reveal-wrapper:hover img {
-  transform: scale(1.08);
+@media (hover: hover) {
+  .img-reveal-wrapper:hover img {
+    transform: scale(1.08);
+  }
 }
 
 /* Premium Button Sweep */
@@ -117,24 +128,34 @@
   background-color: var(--color-deep-black);
 }
 
-.btn--primary:hover::after {
-  transform: translateX(0);
-}
-
-.btn--primary:hover {
-  background-color: var(--color-warm-gold); /* Keep base color so it transitions smoothly underneath */
-  color: var(--color-warm-white) !important;
+@media (hover: hover) {
+  .btn--primary:hover::after {
+    transform: translateX(0);
+  }
+  
+  .btn--primary:hover {
+    background-color: var(--color-warm-gold);
+    color: var(--color-warm-white) !important;
+  }
 }
 
 .btn--secondary::after {
   background-color: var(--color-warm-gold);
 }
 
-.btn--secondary:hover::after {
-  transform: translateX(0);
+@media (hover: hover) {
+  .btn--secondary:hover::after {
+    transform: translateX(0);
+  }
+  
+  .btn--secondary:hover {
+    border-color: var(--color-warm-gold);
+    color: var(--color-warm-white) !important;
+  }
 }
 
-.btn--secondary:hover {
-  border-color: var(--color-warm-gold);
-  color: var(--color-warm-white) !important;
+/* Mobile Active States for Buttons */
+.btn:active {
+  transform: scale(0.97);
+  opacity: 0.9;
 }

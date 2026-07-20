@@ -33,7 +33,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className={cn('navbar', isScrolled ? 'navbar--scrolled glass' : '')}>
+    <header className={cn('navbar', isScrolled ? 'navbar--scrolled glass' : '', isMobileMenuOpen && 'navbar--open')}>
       <div className="navbar__container container">
         <Link to="/" className="navbar__logo">
           {restaurantInfo.name}

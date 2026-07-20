@@ -197,3 +197,41 @@ textarea.form-control {
   font-size: 2.5rem;
   margin: 0 auto var(--spacing-lg);
 }
+
+@media (max-width: 767px) {
+  .contact-page {
+    padding-top: calc(80px + env(safe-area-inset-top, 0px));
+  }
+  .contact-header {
+    margin-bottom: var(--spacing-xl);
+  }
+  .contact-grid {
+    gap: var(--spacing-2xl);
+  }
+  .contact-info {
+    gap: var(--spacing-xl);
+  }
+  .contact-form-wrapper {
+    padding: 1.5rem !important;
+  }
+  .contact-form-wrapper h2 {
+    font-size: 1.6rem;
+  }
+  .contact-form-wrapper p {
+    margin-bottom: var(--spacing-lg);
+  }
+  .contact-form {
+    gap: var(--spacing-md);
+  }
+  .form-row {
+    gap: var(--spacing-md);
+  }
+  .form-control {
+    font-size: 16px !important; /* Force 16px to prevent iOS auto-zoom */
+    padding: 12px;
+  }
+  .form-submit {
+    min-height: 48px;
+    font-size: 1rem;
+  }
+}

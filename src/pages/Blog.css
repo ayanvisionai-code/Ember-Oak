@@ -180,3 +180,33 @@
   border-top: 1px solid rgba(0,0,0,0.05);
   padding-top: var(--spacing-md);
 }
+
+@media (max-width: 767px) {
+  .blog-page {
+    padding-top: calc(80px + env(safe-area-inset-top, 0px));
+  }
+  .blog-header {
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+  }
+  .featured-article {
+    margin-bottom: var(--spacing-2xl);
+  }
+  .featured-article__img {
+    height: 240px;
+  }
+  .featured-article__content {
+    padding: 1.5rem;
+  }
+  .featured-article__title {
+    font-size: 1.6rem;
+  }
+  .featured-article__excerpt {
+    font-size: 1rem;
+  }
+  .blog-grid {
+    gap: var(--spacing-lg);
+  }
+  .blog-card__content {
+    padding: 1.5rem;
+  }
+}

@@ -319,3 +319,46 @@
 
 .mx-auto { margin-left: auto; margin-right: auto; }
 .mb-4 { margin-bottom: var(--spacing-xl); }
+
+@media (max-width: 767px) {
+  .menu-header {
+    min-height: 250px;
+    height: 35vh;
+  }
+  .menu-title {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+  .menu-controls {
+    top: calc(60px + env(safe-area-inset-top, 0px));
+    padding: 1rem 0;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+  }
+  .menu-search {
+    min-width: 100%;
+  }
+  .menu-search input {
+    font-size: 16px !important; /* Prevent zoom */
+    min-height: 44px;
+  }
+  .menu-category-btn {
+    font-size: 1.1rem;
+  }
+  .menu-list {
+    gap: var(--spacing-lg);
+  }
+  .menu-item-name {
+    white-space: normal; /* allow wrapping on narrow screens */
+    font-size: 1.25rem;
+  }
+  .menu-conversion-prompt {
+    margin-top: var(--spacing-2xl);
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  .menu-conversion-prompt h2 {
+    font-size: 1.8rem;
+  }
+  .menu-conversion-prompt p {
+    font-size: 1rem;
+  }
+}

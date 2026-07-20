@@ -14,11 +14,14 @@
   }
 }
 
-/* Mobile: Stacked above existing FABs */
+/* Mobile: Bottom left to avoid overlapping FABs and system bars */
 @media (max-width: 768px) {
   .vip-widget-container {
-    bottom: 160px; /* Positioned above WhatsApp/Calendar */
-    right: var(--spacing-md);
+    bottom: calc(var(--spacing-lg) + env(safe-area-inset-bottom, 0px));
+    left: var(--spacing-md);
+    right: auto;
+    width: 290px;
+    max-width: calc(100vw - 32px);
   }
 }
 
@@ -132,26 +135,46 @@
   }
 }
 
-/* Mobile uses a compact version */
+/* Mobile uses a premium card layout */
 @media (max-width: 768px) {
   .vip-pill {
-    padding: 12px 20px;
-    border-radius: 30px;
-    flex-direction: row;
-    gap: 12px;
-    width: auto;
+    padding: 20px;
+    border-radius: 16px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid var(--color-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
   .vip-pill__icon {
-    margin-bottom: 0;
+    margin-bottom: 4px;
+    display: block;
   }
   .vip-pill__title {
-    font-size: 1rem;
-    margin-bottom: 0;
-    white-space: nowrap;
+    font-size: 1.15rem;
+    margin-bottom: 2px;
+    white-space: normal;
   }
-  .vip-pill__desc,
+  .vip-pill__desc {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    line-height: 1.45;
+  }
+  .vip-pill__btn {
+    display: inline-flex;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    justify-content: center;
+    min-height: 48px;
+  }
   .vip-pill__explanation,
-  .vip-pill__btn,
   .vip-pill__trust {
     display: none;
   }
@@ -186,6 +209,48 @@
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
   color: var(--color-warm-white);
   text-align: center;
+}
+
+@media (max-width: 576px) {
+  .vip-modal-overlay {
+    padding: 12px;
+    align-items: center;
+  }
+  .vip-modal {
+    padding: 28px 20px;
+    border-radius: 16px;
+    max-height: calc(100vh - calc(32px + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px)));
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .vip-modal__close {
+    top: 16px;
+    right: 16px;
+  }
+  .vip-modal__header {
+    margin-bottom: 20px;
+  }
+  .vip-modal__title {
+    font-size: 1.6rem;
+  }
+  .vip-form {
+    gap: 12px;
+  }
+  .vip-form__input {
+    font-size: 16px !important;
+    padding: 12px;
+    min-height: 48px;
+  }
+  .vip-form__label {
+    font-size: 0.95rem;
+  }
+  .vip-status__box {
+    padding: 16px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+  }
 }
 
 .vip-modal__close {

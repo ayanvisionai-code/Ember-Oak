@@ -22,6 +22,7 @@ const selectStyles = {
     borderColor: state.isFocused ? 'var(--color-gold)' : 'rgba(255, 255, 255, 0.1)',
     borderRadius: '8px',
     padding: '2px',
+    fontSize: '16px',
     boxShadow: state.isFocused ? '0 0 0 1px var(--color-gold)' : 'none',
     '&:hover': {
       borderColor: 'var(--color-gold)'
@@ -33,28 +34,33 @@ const selectStyles = {
     border: '1px solid rgba(212, 175, 55, 0.25)',
     borderRadius: '8px',
     boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)',
-    zIndex: 9999
+    zIndex: 9999,
+    fontSize: '16px'
   }),
   option: (base, state) => ({
     ...base,
     background: state.isSelected ? 'rgba(212, 175, 55, 0.2)' : state.isFocused ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
     color: state.isSelected ? 'var(--color-gold)' : '#fff',
     cursor: 'pointer',
+    fontSize: '16px',
     '&:active': {
       background: 'rgba(212, 175, 55, 0.3)'
     }
   }),
   singleValue: (base) => ({
     ...base,
-    color: '#fff'
+    color: '#fff',
+    fontSize: '16px'
   }),
   input: (base) => ({
     ...base,
-    color: '#fff'
+    color: '#fff',
+    fontSize: '16px'
   }),
   placeholder: (base) => ({
     ...base,
-    color: 'rgba(255, 255, 255, 0.5)'
+    color: 'rgba(255, 255, 255, 0.5)',
+    fontSize: '16px'
   })
 };
 
@@ -213,12 +219,12 @@ export default function AcquisitionModal({ isOpen, onClose }) {
               <form className="vip-form" onSubmit={handleSubmit}>
                 <div className="vip-form__group">
                   <label className="vip-form__label" htmlFor="fullName">Full Name</label>
-                  <input type="text" id="fullName" name="fullName" className="vip-form__input" required value={formData.fullName} onChange={handleChange} disabled={status === 'loading'} />
+                  <input type="text" id="fullName" name="fullName" className="vip-form__input" required value={formData.fullName} onChange={handleChange} disabled={status === 'loading'} autoComplete="name" />
                 </div>
                 
                 <div className="vip-form__group">
                   <label className="vip-form__label" htmlFor="email">Email Address</label>
-                  <input type="email" id="email" name="email" className="vip-form__input" required value={formData.email} onChange={handleChange} disabled={status === 'loading'} />
+                  <input type="email" id="email" name="email" className="vip-form__input" required value={formData.email} onChange={handleChange} disabled={status === 'loading'} autoComplete="email" inputMode="email" />
                 </div>
 
                 <div className="vip-form__group">
@@ -231,12 +237,13 @@ export default function AcquisitionModal({ isOpen, onClose }) {
                     isDisabled={status === 'loading'}
                     classNamePrefix="vip-select"
                     styles={selectStyles}
+                    isSearchable={true}
                   />
                 </div>
 
                 <div className="vip-form__group">
                   <label className="vip-form__label" htmlFor="whatsapp">WhatsApp Number</label>
-                  <input type="tel" id="whatsapp" name="whatsapp" className="vip-form__input" required placeholder={`${selectedCountry.phonecode} 98765 43210`} value={formData.whatsapp} onChange={handleChange} disabled={status === 'loading'} />
+                  <input type="tel" id="whatsapp" name="whatsapp" className="vip-form__input" required placeholder={`${selectedCountry.phonecode} 98765 43210`} value={formData.whatsapp} onChange={handleChange} disabled={status === 'loading'} autoComplete="tel" inputMode="tel" />
                 </div>
                 
                 <div className="vip-form__consent">

@@ -1,5 +1,5 @@
 .legal-page {
-  padding: calc(var(--nav-height) + 80px) 0 80px;
+  padding: 160px 0 80px;
   background-color: var(--color-dark-bg);
   color: var(--color-warm-white);
   min-height: 100vh;
@@ -94,6 +94,10 @@
 }
 
 @media (max-width: 768px) {
+  .legal-page {
+    padding: calc(90px + env(safe-area-inset-top, 0px)) 0 var(--spacing-xl);
+  }
+
   .legal__content {
     padding: 30px 20px;
     border-radius: 16px;
