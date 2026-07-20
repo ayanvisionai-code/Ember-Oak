@@ -5,6 +5,6 @@
   "explanation": "Complete a quick 30-second form and receive your welcome reward instantly on WhatsApp.",
   "rewardTitle": "Complimentary Mocktail",
   "ctaText": "Claim My Welcome Gift",
-  "webhookUrl": "https://hook.us1.make.com/mock-webhook-endpoint",
+  "webhookUrl": "https://n8n.n8nayan.sbs/webhook-test/7e8a7c2e-d8a1-4f57-a955-d9846003e596",
   "expirationDays": 14
 }

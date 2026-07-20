@@ -24,31 +24,26 @@ export default function AcquisitionModal({ isOpen, onClose }) {
     const normalizedPhone = normalizeWhatsApp(formData.whatsapp);
     
     const payload = {
-      ...formData,
-      whatsapp: normalizedPhone,
-      reward: config.rewardTitle
+      name: formData.fullName,
+      email: formData.email,
+      whatsapp: normalizedPhone
     };
 
     try {
-      if (config.webhookUrl.includes('mock-webhook-endpoint')) {
-        setTimeout(() => {
-          if (normalizedPhone.endsWith('0')) {
-             setStatus('success_existing');
-          } else {
-             setStatus('success_new');
-          }
-        }, 1500);
-        return;
-      }
-
       const res = await fetch(config.webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
       
+      if (!res.ok) {
+        setStatus('error');
+        return;
+      }
+
       const data = await res.json();
       
+      // Handle the exact response from n8n
       if (data.status === 'existing') {
         setStatus('success_existing');
       } else if (data.status === 'success') {
@@ -58,6 +53,7 @@ export default function AcquisitionModal({ isOpen, onClose }) {
       }
       
     } catch (err) {
+      // Network failure or JSON parse failure
       setStatus('error');
     }
   };
