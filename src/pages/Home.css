@@ -155,33 +155,36 @@
     padding-top: calc(80px + env(safe-area-inset-top, 0px));
     min-height: 100svh;
     display: flex;
-    align-items: center;
-    padding-bottom: 3rem;
+    /* Push content toward top so fixed bottom card doesn't compete */
+    align-items: flex-start;
+    /* Reserve 100px at bottom for the compact welcome gift card + safe area */
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
   }
   
   .hero__content {
     margin-top: 0;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    /* Gentle top offset so branding clears the navbar comfortably */
+    padding-top: clamp(1.5rem, 5vh, 3rem);
+    padding-bottom: 0;
   }
 
   .hero__title {
-    font-size: clamp(2rem, 8vw, 3.2rem);
+    font-size: clamp(1.9rem, 8vw, 3rem);
     line-height: 1.15;
     margin-bottom: var(--spacing-md);
   }
 
   .hero__subtitle {
-    font-size: 1.05rem;
-    margin-bottom: var(--spacing-xl);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-lg);
     line-height: 1.5;
   }
 
   .hero__actions {
     flex-direction: column;
     width: 100%;
-    gap: 12px;
-    margin-bottom: var(--spacing-xl);
+    gap: 10px;
+    margin-bottom: var(--spacing-lg);
   }
 
   .hero__actions .btn {
@@ -194,12 +197,28 @@
   .hero__info {
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
+    gap: 6px;
+    font-size: 0.82rem;
   }
 
   .hero__dot {
     display: none;
+  }
+}
+
+/* Extra-small phones: tighten further so nothing is squished */
+@media (max-width: 375px) {
+  .hero {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+  .hero__content {
+    padding-top: 1rem;
+  }
+  .hero__title {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+  }
+  .hero__subtitle {
+    font-size: 0.95rem;
   }
 }
 

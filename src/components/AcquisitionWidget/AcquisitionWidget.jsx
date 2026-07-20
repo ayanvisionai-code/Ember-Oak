@@ -73,8 +73,10 @@ export default function AcquisitionWidget() {
         <div className="vip-widget-content-wrapper">
           <div className={cn("vip-content-hero", !isHeroVisible && "vip-content-hidden")}>
             <ConciergeBell size={26} className="vip-pill__icon" strokeWidth={1.5} />
-            <h3 className="vip-pill__title">{config.title}</h3>
-            <p className="vip-pill__desc">{config.description}</p>
+            <div className="vip-pill__text-group">
+              <h3 className="vip-pill__title">{config.title}</h3>
+              <p className="vip-pill__desc">{config.description}</p>
+            </div>
             <p className="vip-pill__explanation">{config.explanation}</p>
             
             <button className="btn btn--gold vip-pill__btn">
