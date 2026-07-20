@@ -1,8 +1,62 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ConciergeBell, CheckCircle, AlertCircle, Info, AlertTriangle } from 'lucide-react';
+import Select from 'react-select';
+import { Country } from 'country-state-city';
 import config from '../../data/vip-config.json';
 import './AcquisitionWidget.css';
+
+const countryOptions = Country.getAllCountries().map(c => ({
+  value: c.isoCode,
+  label: `${c.flag} ${c.name} (+${c.phonecode})`,
+  country: c.name,
+  phonecode: `+${c.phonecode}`
+}));
+
+const defaultCountry = countryOptions.find(c => c.value === 'IN') || countryOptions[0];
+
+const selectStyles = {
+  control: (base, state) => ({
+    ...base,
+    background: 'rgba(255, 255, 255, 0.05)',
+    borderColor: state.isFocused ? 'var(--color-gold)' : 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '8px',
+    padding: '2px',
+    boxShadow: state.isFocused ? '0 0 0 1px var(--color-gold)' : 'none',
+    '&:hover': {
+      borderColor: 'var(--color-gold)'
+    }
+  }),
+  menu: (base) => ({
+    ...base,
+    background: '#1a1a1a',
+    border: '1px solid rgba(212, 175, 55, 0.25)',
+    borderRadius: '8px',
+    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)',
+    zIndex: 9999
+  }),
+  option: (base, state) => ({
+    ...base,
+    background: state.isSelected ? 'rgba(212, 175, 55, 0.2)' : state.isFocused ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+    color: state.isSelected ? 'var(--color-gold)' : '#fff',
+    cursor: 'pointer',
+    '&:active': {
+      background: 'rgba(212, 175, 55, 0.3)'
+    }
+  }),
+  singleValue: (base) => ({
+    ...base,
+    color: '#fff'
+  }),
+  input: (base) => ({
+    ...base,
+    color: '#fff'
+  }),
+  placeholder: (base) => ({
+    ...base,
+    color: 'rgba(255, 255, 255, 0.5)'
+  })
+};
 
 const normalizeWhatsApp = (number) => {
   return number.replace(/\D/g, '');
@@ -23,6 +77,7 @@ export default function AcquisitionModal({ isOpen, onClose }) {
   const [status, setStatus] = useState('idle'); // idle, loading, done, network_error
   const [responseData, setResponseData] = useState(null);
   const [formData, setFormData] = useState({ fullName: '', email: '', whatsapp: '' });
+  const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [isAgreed, setIsAgreed] = useState(false);
 
   const handleChange = (e) => {
@@ -38,7 +93,10 @@ export default function AcquisitionModal({ isOpen, onClose }) {
     const payload = {
       name: formData.fullName,
       email: formData.email,
-      whatsapp: normalizedPhone
+      country: selectedCountry.country,
+      countryCode: selectedCountry.phonecode,
+      whatsapp: normalizedPhone,
+      fullWhatsapp: `${selectedCountry.phonecode}${normalizedPhone}`
     };
 
     try {
@@ -164,8 +222,21 @@ export default function AcquisitionModal({ isOpen, onClose }) {
                 </div>
 
                 <div className="vip-form__group">
+                  <label className="vip-form__label" htmlFor="country">Country</label>
+                  <Select
+                    id="country"
+                    options={countryOptions}
+                    value={selectedCountry}
+                    onChange={(option) => setSelectedCountry(option)}
+                    isDisabled={status === 'loading'}
+                    classNamePrefix="vip-select"
+                    styles={selectStyles}
+                  />
+                </div>
+
+                <div className="vip-form__group">
                   <label className="vip-form__label" htmlFor="whatsapp">WhatsApp Number</label>
-                  <input type="tel" id="whatsapp" name="whatsapp" className="vip-form__input" required placeholder="+1 234 567 8900" value={formData.whatsapp} onChange={handleChange} disabled={status === 'loading'} />
+                  <input type="tel" id="whatsapp" name="whatsapp" className="vip-form__input" required placeholder={`${selectedCountry.phonecode} 98765 43210`} value={formData.whatsapp} onChange={handleChange} disabled={status === 'loading'} />
                 </div>
                 
                 <div className="vip-form__consent">
